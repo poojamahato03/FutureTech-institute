@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course List - Student ERP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Course List - Student ERP</h2>
+
+  <div class="search-box">
+    <input type="text" id="search" placeholder="Search Course...">
+  </div>
+
+  <table id="courseTable">
+    <thead>
+      <tr>
+        <th>Course Name</th>
+        <th>Duration</th>
+        <th>Fees</th>
+        <th>Total Students</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>BCA</td>
+        <td>3 Years</td>
+        <td>₹45,000</td>
+        <td>120</td>
+        <td>
+          <button class="btn view">View</button>
+          <button class="btn edit">Edit</button>
+        </td>
+      </tr>
+      <tr>
+        <td>BSc Computer Science</td>
+        <td>3 Years</td>
+        <td>₹50,000</td>
+        <td>90</td>
+        <td>
+          <button class="btn view">View</button>
+          <button class="btn edit">Edit</button>
+        </td>
+      </tr>
+      <tr>
+        <td>MCA</td>
+        <td>2 Years</td>
+        <td>₹60,000</td>
+        <td>60</td>
+        <td>
+          <button class="btn view">View</button>
+          <button class="btn edit">Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+  </div>
+</div>
+
+<script>
+document.getElementById("search").addEventListener("keyup", function() {
+  let filter = this.value.toUpperCase();
+  let rows = document.querySelectorAll("#courseTable tbody tr");
+
+  rows.forEach(row => {
+    let text = row.textContent.toUpperCase();
+    row.style.display = text.includes(filter) ? "" : "none";
+  });
+});
+</script>
+
+</body>
+</html>
