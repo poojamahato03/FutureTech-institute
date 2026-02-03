@@ -4,27 +4,28 @@ body {
   padding: 20px;
 }
 
-h2 {
-  text-align: center;
-}
-
 .container {
   max-width: 900px;
   margin: auto;
   background: white;
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .search-box {
   text-align: right;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .search-box input {
   padding: 8px;
-  width: 200px;
+  width: 220px;
 }
 
 table {
@@ -33,7 +34,7 @@ table {
 }
 
 th, td {
-  padding: 10px;
+  padding: 12px;
   text-align: center;
   border-bottom: 1px solid #ddd;
 }
@@ -48,25 +49,39 @@ th {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  color: white;
 }
-
 
 .view {
   background: #3498db;
-  color: white;
 }
 
 .edit {
   background: #27ae60;
-  color: white;
 }
 
-.pagination {
-  text-align: center;
-  margin-top: 15px;
+/* Modal */
+#modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
 }
 
-.pagination button {
-  padding: 6px 10px;
-  margin: 2px;
+.modal-box {
+  background: white;
+  padding: 20px;
+  width: 300px;
+  border-radius: 8px;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+  font-size: 18px;
 }

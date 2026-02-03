@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Course List - Student ERP</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Course List | Student ERP</title>
+  <link rel="stylesheet" href="course.css">
 </head>
 <body>
 
 <div class="container">
   <h2>Course List - Student ERP</h2>
 
+  <!-- Search Box -->
   <div class="search-box">
-    <input type="text" id="search" placeholder="Search Course...">
+    <input type="text" id="search" placeholder="Search course...">
   </div>
 
+  <!-- Course Table -->
   <table id="courseTable">
     <thead>
       <tr>
@@ -24,6 +26,7 @@
         <th>Action</th>
       </tr>
     </thead>
+
     <tbody>
       <tr>
         <td>BCA</td>
@@ -31,51 +34,152 @@
         <td>₹45,000</td>
         <td>120</td>
         <td>
-          <button class="btn view">View</button>
-          <button class="btn edit">Edit</button>
+          <button class="btn view" onclick="viewCourse(this)">View</button>
+          <button class="btn edit" onclick="editCourse(this)">Edit</button>
         </td>
       </tr>
+
       <tr>
         <td>BSc Computer Science</td>
         <td>3 Years</td>
         <td>₹50,000</td>
         <td>90</td>
         <td>
-          <button class="btn view">View</button>
-          <button class="btn edit">Edit</button>
+          <button class="btn view" onclick="viewCourse(this)">View</button>
+          <button class="btn edit" onclick="editCourse(this)">Edit</button>
         </td>
       </tr>
+
+      <tr>
+        <td>BSc Information Technology</td>
+        <td>3 Years</td>
+        <td>₹48,000</td>
+        <td>80</td>
+        <td>
+          <button class="btn view" onclick="viewCourse(this)">View</button>
+          <button class="btn edit" onclick="editCourse(this)">Edit</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>BSc Data Science</td>
+        <td>3 Years</td>
+        <td>₹55,000</td>
+        <td>70</td>
+        <td>
+          <button class="btn view" onclick="viewCourse(this)">View</button>
+          <button class="btn edit" onclick="editCourse(this)">Edit</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>BSc Artificial Intelligence</td>
+        <td>3 Years</td>
+        <td>₹60,000</td>
+        <td>65</td>
+        <td>
+          <button class="btn view" onclick="viewCourse(this)">View</button>
+          <button class="btn edit" onclick="editCourse(this)">Edit</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>BSc Cyber Security</td>
+        <td>3 Years</td>
+        <td>₹58,000</td>
+        <td>55</td>
+        <td>
+          <button class="btn view" onclick="viewCourse(this)">View</button>
+          <button class="btn edit" onclick="editCourse(this)">Edit</button>
+        </td>
+      </tr>
+
       <tr>
         <td>MCA</td>
         <td>2 Years</td>
         <td>₹60,000</td>
         <td>60</td>
         <td>
-          <button class="btn view">View</button>
-          <button class="btn edit">Edit</button>
+          <button class="btn view" onclick="viewCourse(this)">View</button>
+          <button class="btn edit" onclick="editCourse(this)">Edit</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>MSc Computer Science</td>
+        <td>2 Years</td>
+        <td>₹55,000</td>
+        <td>40</td>
+        <td>
+          <button class="btn view" onclick="viewCourse(this)">View</button>
+          <button class="btn edit" onclick="editCourse(this)">Edit</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>MBA</td>
+        <td>2 Years</td>
+        <td>₹70,000</td>
+        <td>50</td>
+        <td>
+          <button class="btn view" onclick="viewCourse(this)">View</button>
+          <button class="btn edit" onclick="editCourse(this)">Edit</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>MSc Data Science</td>
+        <td>2 Years</td>
+        <td>₹65,000</td>
+        <td>35</td>
+        <td>
+          <button class="btn view" onclick="viewCourse(this)">View</button>
+          <button class="btn edit" onclick="editCourse(this)">Edit</button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
 
-  <div class="pagination">
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
+<!-- Modal -->
+<div id="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal()">×</span>
+    <h3 id="modalTitle"></h3>
+    <p id="modalData"></p>
   </div>
 </div>
 
-
+<!-- JavaScript -->
 <script>
-document.getElementById("search").addEventListener("keyup", function() {
+document.getElementById("search").addEventListener("keyup", function () {
   let filter = this.value.toUpperCase();
   let rows = document.querySelectorAll("#courseTable tbody tr");
 
   rows.forEach(row => {
-    let text = row.textContent.toUpperCase();
-    row.style.display = text.includes(filter) ? "" : "none";
+    row.style.display = row.innerText.toUpperCase().includes(filter)
+      ? "" : "none";
   });
 });
+
+function viewCourse(btn) {
+  let row = btn.parentElement.parentElement;
+  document.getElementById("modalTitle").innerText = row.cells[0].innerText;
+  document.getElementById("modalData").innerHTML =
+    "<b>Duration:</b> " + row.cells[1].innerText + "<br>" +
+    "<b>Fees:</b> " + row.cells[2].innerText + "<br>" +
+    "<b>Total Students:</b> " + row.cells[3].innerText;
+
+  document.getElementById("modal").style.display = "flex";
+}
+
+function editCourse(btn) {
+  alert("Edit course: " + btn.parentElement.parentElement.cells[0].innerText);
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
 </script>
 
 </body>
